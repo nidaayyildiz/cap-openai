@@ -2,7 +2,7 @@ from pydantic import Field, validator
 from typing import List, Optional, Union, Literal
 from sdks.novavision.src.base.model import Package, Image, Inputs, Configs, Outputs, Response, Request, Output, Input, Config
 
-# ================= Inputs =================
+
 class InputImage(Input):
     name: Literal["inputImage"] = "inputImage"
     value: Union[List[Image], Image]
@@ -20,7 +20,7 @@ class InputImage(Input):
         title = "Image"
 
 
-# ================= Outputs =================
+
 class OutputText(Output):
     name: Literal["output"] = "output"
     value: Optional[str]
@@ -45,8 +45,7 @@ class OutputClasses(Output):
         title = "Classes"
 
 
-# ================= Options for Dropdowns =================
-# Model Versions
+
 class OptionModelGpt54(Config):
     name: Literal["gpt-5.4"] = "gpt-5.4"
     value: Literal["gpt-5.4"] = "gpt-5.4"
@@ -211,7 +210,7 @@ class OptionDetailHigh(Config):
         title = "high"
 
 
-# ================= Config Fields =================
+
 
 class ModelVersion(Config):
     name: Literal["ModelVersion"] = "ModelVersion"
@@ -296,7 +295,7 @@ class ConfigOutputStructure(Config):
         json_schema_extra = {"shortDescription": "Expected JSON output structure"}
 
 
-# ================= Executor Configs =================
+
 
 class DefaultInputs(Inputs):
     inputImage: InputImage
@@ -381,7 +380,7 @@ class PromptOnlyConfigs(Configs):
     reasoningEffort: ReasoningEffort
 
 
-# ================= Executor Outputs =================
+
 
 class DefaultOutputs(Outputs):
     output: OutputText
@@ -391,7 +390,7 @@ class OutputsWithClasses(Outputs):
     classes: OutputClasses
 
 
-# ================= Executor Requests & Responses =================
+
 
 class UnconstrainedRequest(Request):
     inputs: Optional[DefaultInputs]
@@ -483,7 +482,7 @@ class PromptOnlyResponse(Response):
     outputs: DefaultOutputs
 
 
-# ================= Executor Enums =================
+
 
 class OpenaiUnconstrained(Config):
     name: Literal["OpenaiUnconstrained"] = "OpenaiUnconstrained"
@@ -587,7 +586,7 @@ class ConfigExecutor(Config):
     field: Literal["dependentDropdownlist"] = "dependentDropdownlist"
     class Config:
         title = "Task"
-        # No target when multiple executors
+       
 
 class PackageConfigs(Configs):
     executor: ConfigExecutor
