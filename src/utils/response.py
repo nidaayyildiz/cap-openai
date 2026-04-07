@@ -1,24 +1,28 @@
+import json
+
+_orig_dumps = json.dumps
+def _dumps_utf8(*args, **kwargs):
+    kwargs['ensure_ascii'] = False
+    return _orig_dumps(*args, **kwargs)
+json.dumps = _dumps_utf8
+
 from sdks.novavision.src.helper.package import PackageHelper
-from components.Openai.src.models.PackageModel import (
-    PackageModel, PackageConfigs, ConfigExecutor, DefaultOutputs, OutputsWithClasses,
-    OutputText, OutputClasses, 
-    UnconstrainedResponse, OpenaiUnconstrained,
-    OcrResponse, OpenaiOcr,
-    VqaResponse, OpenaiVqa,
-    CaptionResponse, OpenaiCaption,
-    DetailedCaptionResponse, OpenaiDetailedCaption,
-    ClassificationResponse, OpenaiClassification,
-    MultiLabelClassificationResponse, OpenaiMultiLabelClassification,
-    ObjectDetectionResponse, OpenaiObjectDetection,
-    StructuredAnsweringResponse, OpenaiStructuredAnswering,
-    PromptOnlyResponse, OpenaiPromptOnly
+from capsules.Openai.src.models.PackageModel import (
+    PackageModel, PackageConfigs, ConfigExecutor,
+    OutputText, OutputClasses, OpenaiUnconstrainedExecutor,  UnconstrainedOutputs, UnconstrainedResponse, OpenaiOcrExecutor, 
+    OcrResponse, OcrOutputs, OpenaiVqa, VqaResponse, VqaOutputs, OpenaiCaptionExecutor, CaptionResponse, CaptionOutputs, 
+    OpenaiDetailedCaptionExecutor, DetailedCaptionResponse, DetailedCaptionOutputs, OpenaiMultiLabelClassificationExecutor, MultiLabelClassificationResponse,
+    MultiLabelOutputs, OpenaiClassificationExecutor, ClassificationResponse, ClassificationOutputs, OpenaiPromptOnlyExecutor,
+    PromptOnlyResponse, PromptOnlyOutputs, OpenaiStructuredAnsweringExecutor, StructuredAnsweringResponse, StructuredAnsweringOutputs,
+    OpenaiObjectDetectionExecutor, ObjectDetectionResponse, ObjectDetectionOutputs 
+
 )
 
 def build_unconstrained_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = UnconstrainedOutputs(output=output_text)
     response = UnconstrainedResponse(outputs=outputs)
-    executor = OpenaiUnconstrained(value=response)
+    executor = OpenaiUnconstrainedExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -27,9 +31,9 @@ def build_unconstrained_response(context):
 
 def build_ocr_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = OcrOutputs(output=output_text)
     response = OcrResponse(outputs=outputs)
-    executor = OpenaiOcr(value=response)
+    executor = OpenaiOcrExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -38,7 +42,7 @@ def build_ocr_response(context):
 
 def build_vqa_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = VqaOutputs(output=output_text)
     response = VqaResponse(outputs=outputs)
     executor = OpenaiVqa(value=response)
     config_executor = ConfigExecutor(value=executor)
@@ -49,9 +53,9 @@ def build_vqa_response(context):
 
 def build_caption_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = CaptionOutputs(output=output_text)
     response = CaptionResponse(outputs=outputs)
-    executor = OpenaiCaption(value=response)
+    executor = OpenaiCaptionExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -60,9 +64,9 @@ def build_caption_response(context):
 
 def build_detailed_caption_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = DetailedCaptionOutputs(output=output_text)
     response = DetailedCaptionResponse(outputs=outputs)
-    executor = OpenaiDetailedCaption(value=response)
+    executor = OpenaiDetailedCaptionExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -72,9 +76,9 @@ def build_detailed_caption_response(context):
 def build_classification_response(context):
     output_text = OutputText(value=context.output_text)
     classes = OutputClasses(value=context.parsed_classes)
-    outputs = OutputsWithClasses(output=output_text, classes=classes)
+    outputs = ClassificationOutputs(output=output_text, classes=classes)
     response = ClassificationResponse(outputs=outputs)
-    executor = OpenaiClassification(value=response)
+    executor = OpenaiClassificationExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -84,9 +88,9 @@ def build_classification_response(context):
 def build_multi_label_classification_response(context):
     output_text = OutputText(value=context.output_text)
     classes = OutputClasses(value=context.parsed_classes)
-    outputs = OutputsWithClasses(output=output_text, classes=classes)
+    outputs = MultiLabelOutputs(output=output_text, classes=classes)
     response = MultiLabelClassificationResponse(outputs=outputs)
-    executor = OpenaiMultiLabelClassification(value=response)
+    executor = OpenaiMultiLabelClassificationExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -96,9 +100,9 @@ def build_multi_label_classification_response(context):
 def build_object_detection_response(context):
     output_text = OutputText(value=context.output_text)
     classes = OutputClasses(value=context.parsed_classes)  # Using parsed structures
-    outputs = OutputsWithClasses(output=output_text, classes=classes)
+    outputs = ObjectDetectionOutputs(output=output_text, classes=classes)
     response = ObjectDetectionResponse(outputs=outputs)
-    executor = OpenaiObjectDetection(value=response)
+    executor = OpenaiObjectDetectionExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -107,9 +111,9 @@ def build_object_detection_response(context):
 
 def build_structured_answering_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = StructuredAnsweringOutputs(output=output_text)
     response = StructuredAnsweringResponse(outputs=outputs)
-    executor = OpenaiStructuredAnswering(value=response)
+    executor = OpenaiStructuredAnsweringExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
@@ -118,9 +122,9 @@ def build_structured_answering_response(context):
 
 def build_prompt_only_response(context):
     output_text = OutputText(value=context.output_text)
-    outputs = DefaultOutputs(output=output_text)
+    outputs = PromptOnlyOutputs(output=output_text)
     response = PromptOnlyResponse(outputs=outputs)
-    executor = OpenaiPromptOnly(value=response)
+    executor = OpenaiPromptOnlyExecutor(value=response)
     config_executor = ConfigExecutor(value=executor)
     package_configs = PackageConfigs(executor=config_executor)
     
