@@ -20,9 +20,8 @@ class InputImage(Input):
         title = "Image"
 
 
-
 class OutputText(Output):
-    name: Literal["output"] = "output"
+    name: Literal["outputText"] = "outputText"
     value: Optional[str]
     type: Literal["string"] = "string"
 
@@ -30,7 +29,7 @@ class OutputText(Output):
         title = "Output"
 
 class OutputClasses(Output):
-    name: Literal["classes"] = "classes"
+    name: Literal["outputClasses"] = "outputClasses"
     value: Union[dict, list, str, List[dict]]
     type: str = "object"
 
@@ -46,96 +45,6 @@ class OutputClasses(Output):
 
 
 
-class OptionModelGpt54(Config):
-    name: Literal["gpt-5.4"] = "gpt-5.4"
-    value: Literal["gpt-5.4"] = "gpt-5.4"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-5.4"
-
-class OptionModelGpt52(Config):
-    name: Literal["gpt-5.2"] = "gpt-5.2"
-    value: Literal["gpt-5.2"] = "gpt-5.2"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-5.2"
-
-class OptionModelGpt51(Config):
-    name: Literal["gpt-5.1"] = "gpt-5.1"
-    value: Literal["gpt-5.1"] = "gpt-5.1"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-5.1"
-
-class OptionModelGpt5(Config):
-    name: Literal["gpt-5"] = "gpt-5"
-    value: Literal["gpt-5"] = "gpt-5"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-5"
-
-class OptionModelGpt5Mini(Config):
-    name: Literal["gpt-5-mini"] = "gpt-5-mini"
-    value: Literal["gpt-5-mini"] = "gpt-5-mini"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-5-mini"
-
-class OptionModelGpt5Nano(Config):
-    name: Literal["gpt-5-nano"] = "gpt-5-nano"
-    value: Literal["gpt-5-nano"] = "gpt-5-nano"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-5-nano"
-
-class OptionModelGpt41(Config):
-    name: Literal["gpt-4.1"] = "gpt-4.1"
-    value: Literal["gpt-4.1"] = "gpt-4.1"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-4.1"
-
-class OptionModelGpt41Mini(Config):
-    name: Literal["gpt-4.1-mini"] = "gpt-4.1-mini"
-    value: Literal["gpt-4.1-mini"] = "gpt-4.1-mini"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-4.1-mini"
-
-class OptionModelGpt41Nano(Config):
-    name: Literal["gpt-4.1-nano"] = "gpt-4.1-nano"
-    value: Literal["gpt-4.1-nano"] = "gpt-4.1-nano"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-4.1-nano"
-
-class OptionModelGpt4o(Config):
-    name: Literal["gpt-4o"] = "gpt-4o"
-    value: Literal["gpt-4o"] = "gpt-4o"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-4o"
-
-class OptionModelGpt4oMini(Config):
-    name: Literal["gpt-4o-mini"] = "gpt-4o-mini"
-    value: Literal["gpt-4o-mini"] = "gpt-4o-mini"
-    type: Literal["string"] = "string"
-    field: Literal["option"] = "option"
-    class Config:
-        title = "gpt-4o-mini"
-
-
-# Reasoning Effort Options
 class OptionReasoningNone(Config):
     name: Literal["none"] = "none"
     value: Literal["none"] = "none"
@@ -184,7 +93,222 @@ class OptionReasoningXhigh(Config):
     class Config:
         title = "xhigh"
 
-# Image Detail Options
+
+
+
+class ReasoningEffort(Config):
+    name: Literal["ReasoningEffort"] = "ReasoningEffort"
+    value: Union[OptionReasoningNone, OptionReasoningMinimal,
+    OptionReasoningLow, OptionReasoningMedium,
+    OptionReasoningHigh, OptionReasoningXhigh]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Reasoning Effort"
+        json_schema_extra = {"shortDescription": "Amount of reasoning effort"}
+
+class ReasoningEffort2(Config):
+    name: Literal["ReasoningEffort2"] = "ReasoningEffort2"
+    value: Union[OptionReasoningMinimal,
+    OptionReasoningLow, OptionReasoningMedium,
+    OptionReasoningHigh]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Reasoning Effort"
+        json_schema_extra = {"shortDescription": "Amount of reasoning effort"}
+
+class ReasoningEffort3(Config):
+    name: Literal["ReasoningEffort3"] = "ReasoningEffort3"
+    value: Union[OptionReasoningNone,
+    OptionReasoningLow, OptionReasoningMedium,
+    OptionReasoningHigh]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Reasoning Effort"
+        json_schema_extra = {"shortDescription": "Amount of reasoning effort"}
+
+
+
+class ReasoningEffort4(Config):
+    name: Literal["ReasoningEffort4"] = "ReasoningEffort4"
+    value: Union[OptionReasoningLow, OptionReasoningMedium,
+    OptionReasoningHigh, OptionReasoningXhigh]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Reasoning Effort"
+        json_schema_extra = {"shortDescription": "Amount of reasoning effort"}
+
+
+
+class OptionModelGpt54(Config):
+    name: Literal["gpt-5.4"] = "gpt-5.4"
+    value: Literal["gpt-5.4"] = "gpt-5.4"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-5.4"
+
+
+class OptionModelGpt53(Config):
+    name: Literal["gpt-5.3"] = "gpt-5.3"
+    value: Literal["gpt-5.3"] = "gpt-5.3"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-5.3"
+
+class OptionModelGpt53Chat(Config):
+    name: Literal["gpt-5.3-chat"] = "gpt-5.3-chat"
+    value: Literal["gpt-5.3-chat"] = "gpt-5.3-chat"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort2: ReasoningEffort2
+    class Config:
+        title = "gpt-5.3-chat"
+
+class OptionModelGpt53Codex(Config):
+    name: Literal["gpt-5.3-codex"] = "gpt-5.3-codex"
+    value: Literal["gpt-5.3-codex"] = "gpt-5.3-codex"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort4: ReasoningEffort4
+    class Config:
+        title = "gpt-5.3-codex"
+
+class OptionModelGpt53CodexSpark(Config):
+    name: Literal["gpt-5.3-codex-spark"] = "gpt-5.3-codex-spark"
+    value: Literal["gpt-5.3-codex-spark"] = "gpt-5.3-codex-spark"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort4: ReasoningEffort4
+    class Config:
+        title = "gpt-5.3-codex-spark"
+
+class OptionModelGpt53Instant(Config):
+    name: Literal["gpt-5.3-instant"] = "gpt-5.3-instant"
+    value: Literal["gpt-5.3-instant"] = "gpt-5.3-instant"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort2: ReasoningEffort2
+    class Config:
+        title = "gpt-5.3-instant"
+
+
+class OptionModelGpt54mini(Config):
+    name: Literal["gpt-5.4-mini"] = "gpt-5.4-mini"
+    value: Literal["gpt-5.4-mini"] = "gpt-5.4-mini"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-5.4-mini"
+
+class OptionModelGpt54nano(Config):
+    name: Literal["gpt-5.4-nano"] = "gpt-5.4-nano"
+    value: Literal["gpt-5.4-nano"] = "gpt-5.4-nano"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-5.4-nano"
+
+class OptionModelGpt52(Config):
+    name: Literal["gpt-5.2"] = "gpt-5.2"
+    value: Literal["gpt-5.2"] = "gpt-5.2"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-5.2"
+
+class OptionModelGpt51(Config):
+    name: Literal["gpt-5.1"] = "gpt-5.1"
+    value: Literal["gpt-5.1"] = "gpt-5.1"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort3: ReasoningEffort3
+    class Config:
+        title = "gpt-5.1"
+
+class OptionModelGpt5(Config):
+    name: Literal["gpt-5"] = "gpt-5"
+    value: Literal["gpt-5"] = "gpt-5"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort2: ReasoningEffort2
+    class Config:
+        title = "gpt-5"
+
+class OptionModelGpt5Mini(Config):
+    name: Literal["gpt-5-mini"] = "gpt-5-mini"
+    value: Literal["gpt-5-mini"] = "gpt-5-mini"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort2: ReasoningEffort2
+    class Config:
+        title = "gpt-5-mini"
+
+class OptionModelGpt5Nano(Config):
+    name: Literal["gpt-5-nano"] = "gpt-5-nano"
+    value: Literal["gpt-5-nano"] = "gpt-5-nano"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort2: ReasoningEffort2
+    class Config:
+        title = "gpt-5-nano"
+
+class OptionModelGpt41(Config):
+    name: Literal["gpt-4.1"] = "gpt-4.1"
+    value: Literal["gpt-4.1"] = "gpt-4.1"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-4.1"
+
+class OptionModelGpt41Mini(Config):
+    name: Literal["gpt-4.1-mini"] = "gpt-4.1-mini"
+    value: Literal["gpt-4.1-mini"] = "gpt-4.1-mini"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-4.1-mini"
+
+class OptionModelGpt41Nano(Config):
+    name: Literal["gpt-4.1-nano"] = "gpt-4.1-nano"
+    value: Literal["gpt-4.1-nano"] = "gpt-4.1-nano"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-4.1-nano"
+
+class OptionModelGpt4o(Config):
+    name: Literal["gpt-4o"] = "gpt-4o"
+    value: Literal["gpt-4o"] = "gpt-4o"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-4o"
+
+class OptionModelGpt4oMini(Config):
+    name: Literal["gpt-4o-mini"] = "gpt-4o-mini"
+    value: Literal["gpt-4o-mini"] = "gpt-4o-mini"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    reasoningEffort: ReasoningEffort
+    class Config:
+        title = "gpt-4o-mini"
+
+
+
 class OptionDetailAuto(Config):
     name: Literal["auto"] = "auto"
     value: Literal["auto"] = "auto"
@@ -212,15 +336,6 @@ class OptionDetailHigh(Config):
 
 
 
-class ModelVersion(Config):
-    name: Literal["ModelVersion"] = "ModelVersion"
-    value: Union[OptionModelGpt54, OptionModelGpt52, OptionModelGpt51, OptionModelGpt5, OptionModelGpt5Mini, OptionModelGpt5Nano, OptionModelGpt41, OptionModelGpt41Mini, OptionModelGpt41Nano, OptionModelGpt4o, OptionModelGpt4oMini]
-    type: Literal["object"] = "object"
-    field: Literal["dropdownlist"] = "dropdownlist"
-    class Config:
-        title = "Model Version"
-        json_schema_extra = {"shortDescription": "OpenAI model to use"}
-
 class ApiKey(Config):
     name: Literal["ApiKey"] = "ApiKey"
     value: str = Field(default="")
@@ -229,6 +344,42 @@ class ApiKey(Config):
     class Config:
         title = "API Key"
         json_schema_extra = {"shortDescription": "OpenAI API Key"}
+
+class ApiVersion(Config):
+    name: Literal["ApiVersion"] = "ApiVersion"
+    value: str = Field(default="")
+    type: Literal["string"] = "string"
+    field: Literal["textInput"] = "textInput"
+    class Config:
+        title = "API Version"
+        json_schema_extra = {"shortDescription": "Azure OpenAI API Version"}
+
+class AzureEndpoint(Config):
+    name: Literal["AzureEndpoint"] = "AzureEndpoint"
+    value: str = Field(default="")
+    type: Literal["string"] = "string"
+    field: Literal["textInput"] = "textInput"
+    class Config:
+        title = "Azure Endpoint"
+        json_schema_extra = {"shortDescription": "Azure OpenAi Endpoint"}
+
+class AzureDeployment(Config):
+    name: Literal["AzureDeployment"] = "AzureDeployment"
+    value: str = Field(default="")
+    type: Literal["string"] = "string"
+    field: Literal["textInput"] = "textInput"
+    class Config:
+        title = "Azure Deployment"
+        json_schema_extra = {"shortDescription": "Azure Deployment Name"}
+
+class AzurePromptRole(Config):
+    name: Literal["AzurePromptRole"] = "AzurePromptRole"
+    value: str = Field(default="")
+    type: Literal["string"] = "string"
+    field: Literal["textInput"] = "textInput"
+    class Config:
+        title = "AzurePromptRole"
+        json_schema_extra = {"shortDescription": "Azure Prompt Role"}
 
 class Temperature(Config):
     name: Literal["Temperature"] = "Temperature"
@@ -248,24 +399,6 @@ class MaxTokens(Config):
     class Config:
         title = "Max Tokens"
         json_schema_extra = {"shortDescription": "Maximum tokens to generate"}
-
-class ReasoningEffort(Config):
-    name: Literal["ReasoningEffort"] = "ReasoningEffort"
-    value: Union[OptionReasoningNone, OptionReasoningMinimal, OptionReasoningLow, OptionReasoningMedium, OptionReasoningHigh, OptionReasoningXhigh]
-    type: Literal["object"] = "object"
-    field: Literal["dropdownlist"] = "dropdownlist"
-    class Config:
-        title = "Reasoning Effort"
-        json_schema_extra = {"shortDescription": "Amount of reasoning effort"}
-
-class ImageDetail(Config):
-    name: Literal["ImageDetail"] = "ImageDetail"
-    value: Union[OptionDetailAuto, OptionDetailLow, OptionDetailHigh]
-    type: Literal["object"] = "object"
-    field: Literal["dropdownlist"] = "dropdownlist"
-    class Config:
-        title = "Image Detail"
-        json_schema_extra = {"shortDescription": "Image resolution quality"}
 
 class ConfigPrompt(Config):
     name: Literal["ConfigPrompt"] = "ConfigPrompt"
@@ -297,194 +430,355 @@ class ConfigOutputStructure(Config):
 
 
 
-class DefaultInputs(Inputs):
-    inputImage: InputImage
+class AzurePromptRoleDisabled(Config):
+    """Disable Azure Prompt Role."""
+    name: Literal["AzurePromptRoleDisabled"] = "AzurePromptRoleDisabled"
+    value: Literal["disable"] = "disable"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    class Config:
+        title = "Disable"
+
+class AzurePromptRoleEnabled(Config):
+    """Enable Azure Prompt Role."""
+    name: Literal["AzurePromptRoleEnabled"] = "AzurePromptRoleEnabled"
+    value: Literal["enable"] = "enable"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    azurePromptRole: AzurePromptRole
+    class Config:
+        title = "Enable"
+
+class AzurePromptRoleMode(Config):
+    name: Literal["configFlagsMode"] = "configFlagsMode"
+    value: Union[AzurePromptRoleDisabled, AzurePromptRoleEnabled]
+    type: Literal["object"] = "object"
+    field: Literal["dependentDropdownlist"] = "dependentDropdownlist"
+    class Config:
+        title = "Flags"
+        json_schema_extra = {"shortDescription": "Enable or disable Azure Prompt Role"}
+
+
+
+
+class OpenAiApi(Config):
+    name: Literal["OpenAiApi"] = "OpenAiApi"
+    value: Literal["OpenAiApi"] = "OpenAiApi"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    apiKey: ApiKey
+    class Config:
+        title = "OpenAi Api"
+
+class AzureApi(Config):
+    name: Literal["AzureApi"] = "AzureApi"
+    value: Literal["AzureApi"] = "AzureApi"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    apiKey: ApiKey
+    apiVersion: ApiVersion
+    azureDeployment: AzureDeployment
+    azureEndpoint: AzureEndpoint
+    class Config:
+        title = "Azure Api"
+
+class NovavisionApi(Config):
+    name: Literal["NovavisionApi"] = "NovavisionApi"
+    value: Literal["NovavisionApi"] = "NovavisionApi"
+    type: Literal["string"] = "string"
+    field: Literal["option"] = "option"
+    apiKey: ApiKey
+    class Config:
+        title = "Novavision Api"
+
+class ApiType(Config):
+    name: Literal["ApiType"] = "ApiType"
+    value: Union[NovavisionApi, OpenAiApi, AzureApi]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Api Type"
+        json_schema_extra = {"shortDescription": "Api Type Select"}
+
+
+
+
+class ModelVersion(Config):
+    name: Literal["ModelVersion"] = "ModelVersion"
+    value: Union[
+        OptionModelGpt54, OptionModelGpt53,
+        OptionModelGpt53Chat, OptionModelGpt53Codex, OptionModelGpt53CodexSpark, OptionModelGpt53Instant,
+        OptionModelGpt54mini, OptionModelGpt54nano,
+        OptionModelGpt52, OptionModelGpt51,
+        OptionModelGpt5, OptionModelGpt5Mini, OptionModelGpt5Nano,
+        OptionModelGpt41, OptionModelGpt41Mini, OptionModelGpt41Nano,
+        OptionModelGpt4o, OptionModelGpt4oMini
+    ]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Model Version"
+        json_schema_extra = {"shortDescription": "OpenAI model to use"}
+
+class ImageDetail(Config):
+    name: Literal["ImageDetail"] = "ImageDetail"
+    value: Union[OptionDetailAuto, OptionDetailLow, OptionDetailHigh]
+    type: Literal["object"] = "object"
+    field: Literal["dropdownlist"] = "dropdownlist"
+    class Config:
+        title = "Image Detail"
+        json_schema_extra = {"shortDescription": "Image resolution quality"}
+
+
 
 
 class UnconstrainedConfigs(Configs):
-    prompt: ConfigPrompt
+    configprompt: ConfigPrompt
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
-    reasoningEffort: ReasoningEffort
     imageDetail: ImageDetail
 
 class OcrConfigs(Configs):
+    configprompt: ConfigPrompt
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class VqaConfigs(Configs):
-    prompt: ConfigPrompt
+    configprompt: ConfigPrompt
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class CaptionConfigs(Configs):
+    configprompt: ConfigPrompt
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class DetailedCaptionConfigs(Configs):
+    configprompt: ConfigPrompt
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class ClassificationConfigs(Configs):
-    classes: ConfigClasses
+    configprompt: ConfigPrompt
+    configclasses: ConfigClasses
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class MultiLabelClassificationConfigs(Configs):
-    classes: ConfigClasses
+    configprompt: ConfigPrompt
+    configclasses: ConfigClasses
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class ObjectDetectionConfigs(Configs):
-    classes: ConfigClasses
+    configprompt: ConfigPrompt
+    configclasses: ConfigClasses
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class StructuredAnsweringConfigs(Configs):
-    outputStructure: ConfigOutputStructure
+    configprompt: ConfigPrompt
+    configoutputstructure: ConfigOutputStructure
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
     imageDetail: ImageDetail
 
 class PromptOnlyConfigs(Configs):
-    prompt: ConfigPrompt
+    configprompt: ConfigPrompt
     modelVersion: ModelVersion
-    apiKey: ApiKey
+    apiType: ApiType
     temperature: Temperature
     maxTokens: MaxTokens
-    reasoningEffort: ReasoningEffort
 
 
 
 
-class DefaultOutputs(Outputs):
+class UnconstrainedInputs(Inputs):
+    inputImage: InputImage
+
+class UnconstrainedOutputs(Outputs):
     output: OutputText
-
-class OutputsWithClasses(Outputs):
-    output: OutputText
-    classes: OutputClasses
-
-
-
 
 class UnconstrainedRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[UnconstrainedInputs]
     configs: UnconstrainedConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class UnconstrainedResponse(Response):
-    outputs: DefaultOutputs
 
+class UnconstrainedResponse(Response):
+    outputs: UnconstrainedOutputs
+
+
+class OcrInputs(Inputs):
+    inputImage: InputImage
+
+class OcrOutputs(Outputs):
+    output: OutputText
 
 class OcrRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[OcrInputs]
     configs: OcrConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class OcrResponse(Response):
-    outputs: DefaultOutputs
 
+class OcrResponse(Response):
+    outputs: OcrOutputs
+
+
+class VqaInputs(Inputs):
+    inputImage: InputImage
+
+class VqaOutputs(Outputs):
+    output: OutputText
 
 class VqaRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[VqaInputs]
     configs: VqaConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class VqaResponse(Response):
-    outputs: DefaultOutputs
 
+class VqaResponse(Response):
+    outputs: VqaOutputs
+
+
+class CaptionInputs(Inputs):
+    inputImage: InputImage
+
+class CaptionOutputs(Outputs):
+    output: OutputText
 
 class CaptionRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[CaptionInputs]
     configs: CaptionConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class CaptionResponse(Response):
-    outputs: DefaultOutputs
 
+class CaptionResponse(Response):
+    outputs: CaptionOutputs
+
+
+class DetailedCaptionInputs(Inputs):
+    inputImage: InputImage
+
+class DetailedCaptionOutputs(Outputs):
+    output: OutputText
 
 class DetailedCaptionRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[DetailedCaptionInputs]
     configs: DetailedCaptionConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class DetailedCaptionResponse(Response):
-    outputs: DefaultOutputs
 
+class DetailedCaptionResponse(Response):
+    outputs: DetailedCaptionOutputs
+
+
+class ClassificationInputs(Inputs):
+    inputImage: InputImage
+
+class ClassificationOutputs(Outputs):
+    output: OutputText
+    classes: OutputClasses
 
 class ClassificationRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[ClassificationInputs]
     configs: ClassificationConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class ClassificationResponse(Response):
-    outputs: OutputsWithClasses
 
+class ClassificationResponse(Response):
+    outputs: ClassificationOutputs
+
+
+class MultiLabelInputs(Inputs):
+    inputImage: InputImage
+
+class MultiLabelOutputs(Outputs):
+    output: OutputText
+    classes: OutputClasses
 
 class MultiLabelClassificationRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[MultiLabelInputs]
     configs: MultiLabelClassificationConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class MultiLabelClassificationResponse(Response):
-    outputs: OutputsWithClasses
 
+class MultiLabelClassificationResponse(Response):
+    outputs: MultiLabelOutputs
+
+
+class ObjectDetectionInputs(Inputs):
+    inputImage: InputImage
+
+class ObjectDetectionOutputs(Outputs):
+    output: OutputText
+    classes: OutputClasses
 
 class ObjectDetectionRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[ObjectDetectionInputs]
     configs: ObjectDetectionConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class ObjectDetectionResponse(Response):
-    outputs: OutputsWithClasses
 
+class ObjectDetectionResponse(Response):
+    outputs: ObjectDetectionOutputs
+
+
+class StructuredAnsweringInputs(Inputs):
+    inputImage: InputImage
+
+class StructuredAnsweringOutputs(Outputs):
+    output: OutputText
 
 class StructuredAnsweringRequest(Request):
-    inputs: Optional[DefaultInputs]
+    inputs: Optional[StructuredAnsweringInputs]
     configs: StructuredAnsweringConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
-class StructuredAnsweringResponse(Response):
-    outputs: DefaultOutputs
 
+class StructuredAnsweringResponse(Response):
+    outputs: StructuredAnsweringOutputs
+
+
+class PromptOnlyOutputs(Outputs):
+    output: OutputText
 
 class PromptOnlyRequest(Request):
-    inputs: Optional[Inputs] = None  # No image input
     configs: PromptOnlyConfigs
     class Config:
         json_schema_extra = {"target": "configs"}
+
 class PromptOnlyResponse(Response):
-    outputs: DefaultOutputs
+    outputs: PromptOnlyOutputs
 
 
 
-
-class OpenaiUnconstrained(Config):
+class OpenaiUnconstrainedExecutor(Config):
     name: Literal["OpenaiUnconstrained"] = "OpenaiUnconstrained"
     value: Union[UnconstrainedRequest, UnconstrainedResponse]
     type: Literal["object"] = "object"
@@ -493,7 +787,7 @@ class OpenaiUnconstrained(Config):
         title = "Unconstrained"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiOcr(Config):
+class OpenaiOcrExecutor(Config):
     name: Literal["OpenaiOcr"] = "OpenaiOcr"
     value: Union[OcrRequest, OcrResponse]
     type: Literal["object"] = "object"
@@ -511,7 +805,7 @@ class OpenaiVqa(Config):
         title = "Visual Question Answering"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiCaption(Config):
+class OpenaiCaptionExecutor(Config):
     name: Literal["OpenaiCaption"] = "OpenaiCaption"
     value: Union[CaptionRequest, CaptionResponse]
     type: Literal["object"] = "object"
@@ -520,7 +814,7 @@ class OpenaiCaption(Config):
         title = "Caption"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiDetailedCaption(Config):
+class OpenaiDetailedCaptionExecutor(Config):
     name: Literal["OpenaiDetailedCaption"] = "OpenaiDetailedCaption"
     value: Union[DetailedCaptionRequest, DetailedCaptionResponse]
     type: Literal["object"] = "object"
@@ -529,7 +823,7 @@ class OpenaiDetailedCaption(Config):
         title = "Detailed Caption"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiClassification(Config):
+class OpenaiClassificationExecutor(Config):
     name: Literal["OpenaiClassification"] = "OpenaiClassification"
     value: Union[ClassificationRequest, ClassificationResponse]
     type: Literal["object"] = "object"
@@ -538,7 +832,7 @@ class OpenaiClassification(Config):
         title = "Classification"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiMultiLabelClassification(Config):
+class OpenaiMultiLabelClassificationExecutor(Config):
     name: Literal["OpenaiMultiLabelClassification"] = "OpenaiMultiLabelClassification"
     value: Union[MultiLabelClassificationRequest, MultiLabelClassificationResponse]
     type: Literal["object"] = "object"
@@ -547,7 +841,7 @@ class OpenaiMultiLabelClassification(Config):
         title = "Multi-Label Classification"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiObjectDetection(Config):
+class OpenaiObjectDetectionExecutor(Config):
     name: Literal["OpenaiObjectDetection"] = "OpenaiObjectDetection"
     value: Union[ObjectDetectionRequest, ObjectDetectionResponse]
     type: Literal["object"] = "object"
@@ -556,7 +850,7 @@ class OpenaiObjectDetection(Config):
         title = "Object Detection"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiStructuredAnswering(Config):
+class OpenaiStructuredAnsweringExecutor(Config):
     name: Literal["OpenaiStructuredAnswering"] = "OpenaiStructuredAnswering"
     value: Union[StructuredAnsweringRequest, StructuredAnsweringResponse]
     type: Literal["object"] = "object"
@@ -565,7 +859,7 @@ class OpenaiStructuredAnswering(Config):
         title = "Structured Answering"
         json_schema_extra = {"target": {"value": 0}}
 
-class OpenaiPromptOnly(Config):
+class OpenaiPromptOnlyExecutor(Config):
     name: Literal["OpenaiPromptOnly"] = "OpenaiPromptOnly"
     value: Union[PromptOnlyRequest, PromptOnlyResponse]
     type: Literal["object"] = "object"
@@ -575,24 +869,24 @@ class OpenaiPromptOnly(Config):
         json_schema_extra = {"target": {"value": 0}}
 
 
+
+
 class ConfigExecutor(Config):
     name: Literal["ConfigExecutor"] = "ConfigExecutor"
     value: Union[
-        OpenaiUnconstrained, OpenaiOcr, OpenaiVqa, OpenaiCaption, OpenaiDetailedCaption,
-        OpenaiClassification, OpenaiMultiLabelClassification, OpenaiObjectDetection, OpenaiStructuredAnswering,
-        OpenaiPromptOnly
+        OpenaiUnconstrainedExecutor, OpenaiOcrExecutor, OpenaiVqa, OpenaiCaptionExecutor, OpenaiDetailedCaptionExecutor,
+        OpenaiClassificationExecutor, OpenaiMultiLabelClassificationExecutor, OpenaiObjectDetectionExecutor,
+        OpenaiStructuredAnsweringExecutor, OpenaiPromptOnlyExecutor
     ]
     type: Literal["executor"] = "executor"
     field: Literal["dependentDropdownlist"] = "dependentDropdownlist"
     class Config:
         title = "Task"
-       
 
 class PackageConfigs(Configs):
     executor: ConfigExecutor
 
-
 class PackageModel(Package):
     configs: PackageConfigs
-    type: Literal["component"] = "component"
+    type: Literal["capsule"] = "capsule"
     name: Literal["Openai"] = "Openai"
