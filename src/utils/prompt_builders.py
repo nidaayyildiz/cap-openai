@@ -5,10 +5,8 @@ from .image_utils import encode_image_to_base64
 def format_open_vqa_input(base64_image: str) -> List[Dict[str, Any]]:
     return [
         {
-            "type": "image_url",
-            "image_url": {
-                "url": f"data:image/jpeg;base64,{base64_image}"
-            }
+            "type": "input_image",
+            "image_url": f"data:image/jpeg;base64,{base64_image}"
         }
     ]
 
